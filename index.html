@@ -712,6 +712,7 @@ async function enviar(e, id) {
     });
     if (res.ok) {
       document.getElementById(sid).style.display = 'block';
+      gtag('event', 'generate_lead', { 'event_category': 'formulario', 'event_label': id });
       f.reset();
       if (id === 'bottomForm') document.getElementById(sid).scrollIntoView({behavior:'smooth',block:'center'});
     } else {
