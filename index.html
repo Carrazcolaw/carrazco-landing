@@ -739,6 +739,19 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
     if (t) { e.preventDefault(); t.scrollIntoView({behavior:'smooth',block:'start'}); }
   });
 });
+
+// Phone click tracking
+document.addEventListener('click', function (e) {
+  var a = e.target.closest('a[href^="tel:"]');
+  if (a && typeof gtag === 'function') {
+    gtag('event', 'phone_click', {
+      'event_category': 'telefono',
+      'event_label': a.getAttribute('href'),
+      'value': 400,
+      'currency': 'USD'
+    });
+  }
+});
 </script>
 <!-- Botón Compartir flotante -->
   <a href="https://wa.me/?text=Mira%20este%20abogado%20que%20habla%20español%20y%20no%20cobra%20hasta%20ganar%20👉%20https://abogado.carrazcolawapc.com" target="_blank" 
